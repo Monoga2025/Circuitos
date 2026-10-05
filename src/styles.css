@@ -60,6 +60,8 @@ h1, h2, h3 { margin: 0; }
 .btn.help { background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.5); color: #fde68a; }
 .btn.lost { background: rgba(251, 113, 133, 0.12); border-color: rgba(251, 113, 133, 0.45); color: #fecdd3; }
 .btn.danger { color: var(--red); margin: 16px auto; display: block; }
+.reset-row { align-items: center; margin: 16px 0; }
+.reset-row .btn.danger { margin: 0; }
 .btn.center { display: block; margin: 18px auto; }
 
 .pop-in { animation: popIn 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) both; }

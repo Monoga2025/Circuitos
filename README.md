@@ -157,3 +157,9 @@ con una pregunta de la **misma habilidad en otra representación**; se intercala
 
 - `npm test` — motor (ejercicio de clase, máquinas del tiempo, RL, bosses, Req con dependiente) y modelo de dominio (un acierto ≠ dominio, suerte, ayudas, confianza).
 - Se verificó con Playwright (desktop 1440×900 y móvil 390×844) un recorrido completo de los Labs 0–8 sin errores de consola ni desbordes horizontales.
+
+## Versión publicada
+
+Jugable en: https://claude.ai/artifact/QNzLDJDq42BsoGvZTu2kzx
+
+Para regenerar el archivo único (JS + CSS en línea) que se publica: `npm run build:artifact` → `dist/circuit-quest.html`.

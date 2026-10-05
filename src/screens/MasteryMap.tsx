@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ERRORS, type ErrorType } from '../learning/errors';
 import { displayMastery, isMastered } from '../learning/mastery';
 import { SKILL_GROUPS, SKILLS } from '../learning/skills';
@@ -8,6 +9,7 @@ import { MuteButton } from './Home';
 const blocks = (v: number) => '█'.repeat(Math.round(v * 10)).padEnd(10, '░');
 
 export function MasteryMap() {
+  const [confirmReset, setConfirmReset] = useState(false);
   const skills = useGame((s) => s.skills);
   const errorCounts = useGame((s) => s.errorCounts);
   const exams = useGame((s) => s.exams);
@@ -84,14 +86,27 @@ export function MasteryMap() {
       <p className="mastery-note">
         Una habilidad solo se marca ✓ con ≥ 3 aciertos al primer intento, en ≥ 2 representaciones distintas, sin sospecha de suerte. Hasta entonces la barra se queda en 80 % máx.
       </p>
-      <button
-        className="btn ghost small danger"
-        onClick={() => {
-          if (confirm('¿Borrar todo el progreso?')) useGame.getState().reset();
-        }}
-      >
-        Reiniciar progreso
-      </button>
+      {confirmReset ? (
+        <div className="row reset-row">
+          <span className="muted">¿Borrar todo el progreso?</span>
+          <button className="btn ghost small" onClick={() => setConfirmReset(false)}>
+            Cancelar
+          </button>
+          <button
+            className="btn small danger"
+            onClick={() => {
+              useGame.getState().reset();
+              setConfirmReset(false);
+            }}
+          >
+            Sí, borrar
+          </button>
+        </div>
+      ) : (
+        <button className="btn ghost small danger" onClick={() => setConfirmReset(true)}>
+          Reiniciar progreso
+        </button>
+      )}
     </div>
   );
 }
